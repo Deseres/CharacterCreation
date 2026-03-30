@@ -1,0 +1,11 @@
+C:\CharacterCreation\src\CharacterCreation.Domain\bin\Debug\net10.0\CharacterCreation.Domain.deps.json
+C:\CharacterCreation\src\CharacterCreation.Domain\bin\Debug\net10.0\CharacterCreation.Domain.dll
+C:\CharacterCreation\src\CharacterCreation.Domain\bin\Debug\net10.0\CharacterCreation.Domain.pdb
+C:\CharacterCreation\src\CharacterCreation.Domain\obj\Debug\net10.0\CharacterCreation.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\CharacterCreation\src\CharacterCreation.Domain\obj\Debug\net10.0\CharacterCreation.Domain.AssemblyInfoInputs.cache
+C:\CharacterCreation\src\CharacterCreation.Domain\obj\Debug\net10.0\CharacterCreation.Domain.AssemblyInfo.cs
+C:\CharacterCreation\src\CharacterCreation.Domain\obj\Debug\net10.0\CharacterCreation.Domain.csproj.CoreCompileInputs.cache
+C:\CharacterCreation\src\CharacterCreation.Domain\obj\Debug\net10.0\CharacterCreation.Domain.dll
+C:\CharacterCreation\src\CharacterCreation.Domain\obj\Debug\net10.0\refint\CharacterCreation.Domain.dll
+C:\CharacterCreation\src\CharacterCreation.Domain\obj\Debug\net10.0\CharacterCreation.Domain.pdb
+C:\CharacterCreation\src\CharacterCreation.Domain\obj\Debug\net10.0\ref\CharacterCreation.Domain.dll

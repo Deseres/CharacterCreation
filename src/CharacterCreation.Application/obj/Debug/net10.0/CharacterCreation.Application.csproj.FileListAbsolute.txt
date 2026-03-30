@@ -1,0 +1,15 @@
+C:\CharacterCreation\src\CharacterCreation.Application\bin\Debug\net10.0\CharacterCreation.Application.deps.json
+C:\CharacterCreation\src\CharacterCreation.Application\bin\Debug\net10.0\CharacterCreation.Application.dll
+C:\CharacterCreation\src\CharacterCreation.Application\bin\Debug\net10.0\CharacterCreation.Application.pdb
+C:\CharacterCreation\src\CharacterCreation.Application\bin\Debug\net10.0\CharacterCreation.Domain.dll
+C:\CharacterCreation\src\CharacterCreation.Application\bin\Debug\net10.0\CharacterCreation.Domain.pdb
+C:\CharacterCreation\src\CharacterCreation.Application\obj\Debug\net10.0\CharacterCreation.Application.csproj.AssemblyReference.cache
+C:\CharacterCreation\src\CharacterCreation.Application\obj\Debug\net10.0\CharacterCreation.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\CharacterCreation\src\CharacterCreation.Application\obj\Debug\net10.0\CharacterCreation.Application.AssemblyInfoInputs.cache
+C:\CharacterCreation\src\CharacterCreation.Application\obj\Debug\net10.0\CharacterCreation.Application.AssemblyInfo.cs
+C:\CharacterCreation\src\CharacterCreation.Application\obj\Debug\net10.0\CharacterCreation.Application.csproj.CoreCompileInputs.cache
+C:\CharacterCreation\src\CharacterCreation.Application\obj\Debug\net10.0\Characte.6C895B20.Up2Date
+C:\CharacterCreation\src\CharacterCreation.Application\obj\Debug\net10.0\CharacterCreation.Application.dll
+C:\CharacterCreation\src\CharacterCreation.Application\obj\Debug\net10.0\refint\CharacterCreation.Application.dll
+C:\CharacterCreation\src\CharacterCreation.Application\obj\Debug\net10.0\CharacterCreation.Application.pdb
+C:\CharacterCreation\src\CharacterCreation.Application\obj\Debug\net10.0\ref\CharacterCreation.Application.dll

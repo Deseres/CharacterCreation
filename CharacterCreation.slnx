@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/CharacterCreation.Api/CharacterCreation.Api.csproj" />
+    <Project Path="src/CharacterCreation.Application/CharacterCreation.Application.csproj" />
+    <Project Path="src/CharacterCreation.Domain/CharacterCreation.Domain.csproj" />
+    <Project Path="src/CharacterCreation.Infrastructure/CharacterCreation.Infrastructure.csproj" />
+  </Folder>
+</Solution>
