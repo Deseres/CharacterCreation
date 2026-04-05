@@ -9,3 +9,4 @@ C:\CharacterCreation\src\CharacterCreation.Domain\obj\Debug\net10.0\CharacterCre
 C:\CharacterCreation\src\CharacterCreation.Domain\obj\Debug\net10.0\refint\CharacterCreation.Domain.dll
 C:\CharacterCreation\src\CharacterCreation.Domain\obj\Debug\net10.0\CharacterCreation.Domain.pdb
 C:\CharacterCreation\src\CharacterCreation.Domain\obj\Debug\net10.0\ref\CharacterCreation.Domain.dll
+C:\CharacterCreation\src\CharacterCreation.Domain\obj\Debug\net10.0\CharacterCreation.Domain.sourcelink.json

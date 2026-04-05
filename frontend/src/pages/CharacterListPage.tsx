@@ -1,17 +1,12 @@
 import { useEffect, useState } from 'react'
-import type { FormEvent } from 'react'
 import { Link } from 'react-router-dom'
-import { createCharacter, getCharacters } from '../api/characters'
+import { getCharacters } from '../api/characters'
 import { useAuth } from '../auth/AuthContext'
 import type { Character } from '../types'
-
-const defaultRace = 'Human'
-const defaultClass = 'Fighter'
 
 export function CharacterListPage() {
   const { token, email, logout } = useAuth()
   const [characters, setCharacters] = useState<Character[]>([])
-  const [name, setName] = useState('')
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
 
@@ -33,60 +28,56 @@ export function CharacterListPage() {
     void load()
   }, [token])
 
-  const onCreate = async (event: FormEvent) => {
-    event.preventDefault()
-    if (!token) return
-    setError(null)
-    try {
-      await createCharacter(token, { name, race: defaultRace, class: defaultClass })
-      setName('')
-      await load()
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Create failed')
-    }
-  }
-
   return (
     <div className="page">
       <header className="topbar">
-        <h1>Characters</h1>
         <div>
+          <h1>My Characters</h1>
+          <p className="muted">Build and manage your D&D characters</p>
+        </div>
+        <div className="row">
           <span className="muted">{email}</span>
-          <button onClick={logout}>Logout</button>
+          <button onClick={logout} className="secondary">Logout</button>
         </div>
       </header>
 
       <section className="card">
-        <h2>Create character</h2>
-        <form onSubmit={onCreate} className="row">
-          <input
-            placeholder="Character name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-          <button type="submit">Create</button>
-        </form>
-        <p className="muted">Default race/class: {defaultRace} / {defaultClass}</p>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '1rem' }}>
+          <div>
+            <h2>Create a new character</h2>
+            <p className="muted">Start your character creation adventure</p>
+          </div>
+          <Link to="/characters/create" style={{ textDecoration: 'none' }}>
+            <button style={{ whiteSpace: 'nowrap' }}>Start Wizard</button>
+          </Link>
+        </div>
       </section>
 
       <section className="card">
-        <h2>Your list</h2>
+        <h2>Your characters</h2>
         {loading ? (
-          <p>Loading...</p>
+          <p className="muted">Loading your characters...</p>
+        ) : characters.length === 0 ? (
+          <p className="muted">No characters yet. Create your first one above!</p>
         ) : (
-          <ul className="list">
+          <div className="grid">
             {characters.map((c) => (
-              <li key={c.id}>
-                <Link to={`/characters/${c.id}`}>{c.name}</Link> - {c.race} {c.class} (Lv {c.level})
-              </li>
+              <Link to={`/characters/${c.id}`} key={c.id} className="card character-card" style={{ textDecoration: 'none' }}>
+                <h3>{c.name}</h3>
+                <div className="stack" style={{ gap: '0.5rem' }}>
+                  <div className="row">
+                    <span className="badge">{c.race}</span>
+                    <span className="badge">{c.class}</span>
+                  </div>
+                  <p className="muted">Level {c.level}</p>
+                </div>
+              </Link>
             ))}
-          </ul>
+          </div>
         )}
-        {!loading && characters.length === 0 && <p>No characters yet.</p>}
       </section>
 
-      {error && <p className="error">{error}</p>}
+      {error && <div className="error">{error}</div>}
     </div>
   )
 }

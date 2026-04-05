@@ -165,111 +165,200 @@ export function CharacterSheetPage() {
 
   return (
     <div className="page">
-      <p><Link to="/characters">Back to list</Link></p>
-      <h1>{sheet.name}</h1>
+      <div style={{ marginBottom: '2rem' }}>
+        <Link to="/characters" style={{ color: 'var(--primary)', textDecoration: 'none', fontWeight: 500 }}>
+          ← Back to characters
+        </Link>
+      </div>
 
-      <section className="grid">
+      <div className="topbar" style={{ marginBottom: '2rem' }}>
+        <div>
+          <h1>{sheet.name}</h1>
+          <p className="muted">{sheet.race} {sheet.class} · Level {sheet.level}</p>
+        </div>
+      </div>
+
+      <div className="grid">
+        {/* Race & Class */}
         <div className="card">
-          <h2>Race / Class</h2>
-          <label>
-            Race
-            <select value={sheet.race} onChange={(e) => void onSaveRace(e.target.value)}>
-              {races.map((r) => <option key={r} value={r}>{r}</option>)}
-            </select>
-          </label>
-          <label>
-            Class
-            <select value={sheet.class} onChange={(e) => void onSaveClass(e.target.value)}>
-              {classes.map((c) => <option key={c} value={c}>{c}</option>)}
-            </select>
-          </label>
+          <h2>Race & Class</h2>
+          <div className="stack">
+            <div className="form-group">
+              <label htmlFor="race">Race</label>
+              <select id="race" value={sheet.race} onChange={(e) => void onSaveRace(e.target.value)}>
+                {races.map((r) => <option key={r} value={r}>{r}</option>)}
+              </select>
+            </div>
+            <div className="form-group">
+              <label htmlFor="class">Class</label>
+              <select id="class" value={sheet.class} onChange={(e) => void onSaveClass(e.target.value)}>
+                {classes.map((c) => <option key={c} value={c}>{c}</option>)}
+              </select>
+            </div>
+          </div>
         </div>
 
+        {/* Ability Scores */}
         <div className="card">
           <h2>Ability Scores</h2>
           <form onSubmit={onSaveScores} className="stack">
-            {Object.entries(scoresForm).map(([k, v]) => (
-              <label key={k}>
-                {k}
-                <input
-                  type="number"
-                  min={8}
-                  max={15}
-                  value={v}
-                  onChange={(e) => setScoresForm((prev) => ({ ...prev, [k]: Number(e.target.value) }))}
-                />
-              </label>
-            ))}
-            <p className="muted">
-              Point buy cost: {pointBuyCost}/27 {!pointBuyValid && '(invalid)'}
-            </p>
-            <button type="submit" disabled={!pointBuyValid}>Save scores</button>
+            <div className="stat-grid">
+              {Object.entries(scoresForm).map(([k, v]) => (
+                <div key={k} className="form-group">
+                  <label htmlFor={k} className="stat-label">{k.slice(0, 3).toUpperCase()}</label>
+                  <input
+                    id={k}
+                    type="number"
+                    min={8}
+                    max={15}
+                    value={v}
+                    onChange={(e) => setScoresForm((prev) => ({ ...prev, [k]: Number(e.target.value) }))}
+                    onKeyDown={(e) => e.preventDefault()}
+                    style={{ textAlign: 'center', fontSize: '1.25rem' }}
+                  />
+                </div>
+              ))}
+            </div>
+            <div style={{ backgroundColor: pointBuyValid ? '#d1fae5' : '#fee2e2', padding: '0.75rem', borderRadius: '0.5rem', fontSize: '0.875rem', color: pointBuyValid ? '#065f46' : '#7f1d1d', border: pointBuyValid ? '1px solid #6ee7b7' : '1px solid #fca5a5' }}>
+              Point buy: <strong>{pointBuyCost}</strong>/27 {!pointBuyValid && '⚠ Invalid'}
+            </div>
+            <button type="submit" disabled={!pointBuyValid}>Save ability scores</button>
           </form>
         </div>
 
+        {/* Final Stats */}
         <div className="card">
-          <h2>Calculated Stats</h2>
-          <p>Proficiency bonus: +{sheet.proficiencyBonus}</p>
-          <ul className="list">
+          <h2>Final Stats</h2>
+          <div style={{ marginBottom: '1rem' }}>
+            <p style={{ margin: '0', fontSize: '0.875rem', color: 'var(--text-muted)' }}>Proficiency Bonus</p>
+            <p style={{ margin: '0', fontSize: '1.75rem', fontWeight: 700 }}>+{sheet.proficiencyBonus}</p>
+          </div>
+          <div className="stat-grid">
             {Object.entries(sheet.finalScores).map(([k, v]) => (
-              <li key={k}>{k}: {v} (mod {sheet.abilityModifiers[k as keyof AbilityScores]})</li>
+              <div key={k} className="stat-box">
+                <div className="stat-value">{v}</div>
+                <div className="stat-label">{k.slice(0, 3)}</div>
+                <p style={{ margin: '0.25rem 0 0 0', fontSize: '0.75rem', color: 'var(--primary)' }}>
+                  {sheet.abilityModifiers[k as keyof AbilityScores] >= 0 ? '+' : ''}{sheet.abilityModifiers[k as keyof AbilityScores]}
+                </p>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
 
-        <div className="card">
-          <h2>Inventory</h2>
-          <form onSubmit={onAddItem} className="row">
-            <input value={newItemName} onChange={(e) => setNewItemName(e.target.value)} placeholder="Item name" required />
-            <input value={newItemType} onChange={(e) => setNewItemType(e.target.value)} placeholder="Type" />
-            <button type="submit">Add</button>
-          </form>
-          <ul className="list">
-            {inventory.map((item) => (
-              <li key={item.id}>
-                {item.name} ({item.itemType}) {item.isEquipped ? `[${item.equippedSlot}]` : ''}
-              </li>
-            ))}
-          </ul>
-        </div>
-
+        {/* Equipment Status */}
         <div className="card">
           <h2>Equipment</h2>
-          {slots.map((slot) => (
-            <div key={slot} className="row">
-              <strong>{slot}</strong>
-              <span>{equippedBySlot[slot]?.name ?? 'Empty'}</span>
-              <select
-                defaultValue=""
-                onChange={(e) => {
-                  if (e.target.value) void onEquip(slot, e.target.value)
-                }}
-              >
-                <option value="">Equip...</option>
-                {inventory.map((item) => (
-                  <option key={item.id} value={item.id}>{item.name}</option>
-                ))}
-              </select>
-              <button onClick={() => void onUnequip(slot)}>Unequip</button>
-            </div>
-          ))}
+          <div className="stack" style={{ gap: '0.75rem' }}>
+            {slots.map((slot) => {
+              const equipped = equippedBySlot[slot]
+              return (
+                <div key={slot} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '0.75rem', borderBottom: '1px solid var(--border)' }}>
+                  <div>
+                    <p style={{ margin: '0', fontSize: '0.875rem', fontWeight: 600 }}>{slot}</p>
+                    <p style={{ margin: '0.25rem 0 0 0', fontSize: '0.875rem', color: 'var(--text-muted)' }}>
+                      {equipped ? equipped.name : 'Empty'}
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => void onUnequip(slot)}
+                    disabled={!equipped}
+                    className="secondary"
+                    style={{ padding: '0.4rem 0.75rem', fontSize: '0.75rem' }}
+                  >
+                    Remove
+                  </button>
+                </div>
+              )
+            })}
+          </div>
         </div>
 
+        {/* Add Inventory */}
         <div className="card">
-          <h2>Applied Modifiers</h2>
-          <ul className="list">
-            {sheet.appliedModifiers.map((m, idx) => (
-              <li key={`${m.source}-${m.ability}-${idx}`}>
-                {m.source}: {m.ability} {m.value >= 0 ? '+' : ''}{m.value}
-              </li>
-            ))}
-          </ul>
+          <h2>Add Item</h2>
+          <form onSubmit={onAddItem} className="stack">
+            <div className="form-group">
+              <label htmlFor="item-name">Item name</label>
+              <input
+                id="item-name"
+                value={newItemName}
+                onChange={(e) => setNewItemName(e.target.value)}
+                placeholder="Enter item name"
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="item-type">Type</label>
+              <input
+                id="item-type"
+                value={newItemType}
+                onChange={(e) => setNewItemType(e.target.value)}
+                placeholder=""
+              />
+            </div>
+            <button type="submit">Add to inventory</button>
+          </form>
         </div>
-      </section>
 
-      {isLoading && <p className="muted">Refreshing sheet...</p>}
-      {success && <p>{success}</p>}
-      {error && <p className="error">{error}</p>}
+        {/* Inventory List */}
+        {inventory.length > 0 && (
+          <div className="card">
+            <h2>Inventory ({inventory.length})</h2>
+            <div className="stack" style={{ gap: '0.5rem' }}>
+              {inventory.map((item) => (
+                <div key={item.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0.75rem', backgroundColor: 'var(--bg-card)', borderRadius: '0.5rem', border: '1px solid var(--border)' }}>
+                  <div>
+                    <p style={{ margin: '0', fontWeight: 500 }}>{item.name}</p>
+                    <div style={{ display: 'flex', gap: '0.5rem', marginTop: '0.25rem' }}>
+                      <span className="badge">{item.itemType}</span>
+                      {item.isEquipped && (
+                        <span className="badge" style={{ background: 'var(--primary)', color: 'white' }}>{item.equippedSlot}</span>
+                      )}
+                    </div>
+                  </div>
+                  <select
+                    defaultValue=""
+                    onChange={(e) => {
+                      if (e.target.value) void onEquip(e.target.value, item.id)
+                    }}
+                    style={{ padding: '0.4rem' }}
+                  >
+                    <option value="">Equip to...</option>
+                    {slots.map((slot) => (
+                      <option key={slot} value={slot}>{slot}</option>
+                    ))}
+                  </select>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Applied Modifiers */}
+        {sheet.appliedModifiers.length > 0 && (
+          <div className="card">
+            <h2>Applied Modifiers</h2>
+            <div className="stack" style={{ gap: '0.5rem' }}>
+              {sheet.appliedModifiers.map((m, idx) => (
+                <div key={`${m.source}-${m.ability}-${idx}`} style={{ padding: '0.75rem', backgroundColor: 'var(--bg-card)', borderRadius: '0.5rem', border: '1px solid var(--border)' }}>
+                  <p style={{ margin: '0', fontSize: '0.875rem' }}>
+                    <strong>{m.source}</strong>: {m.ability} <span style={{ color: m.value >= 0 ? 'var(--success)' : 'var(--danger)' }}>
+                      {m.value >= 0 ? '+' : ''}{m.value}
+                    </span>
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Messages */}
+      {error && <div className="error">{error}</div>}
+      {success && <div className="success">{success}</div>}
+      {isLoading && <p className="muted" style={{ textAlign: 'center' }}>Refreshing sheet...</p>}
     </div>
   )
 }
+

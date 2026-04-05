@@ -129,15 +129,18 @@ public static class CharacterSheetCalculator
             },
             "elf" => new[]
             {
-                new StatModifierDto("Race", "Dexterity", 2)
+                new StatModifierDto("Race", "Dexterity", 2),
+                new StatModifierDto("Race", "Intelligence", 1)
             },
             "dwarf" => new[]
             {
-                new StatModifierDto("Race", "Constitution", 2)
+                new StatModifierDto("Race", "Constitution", 2),
+                new StatModifierDto("Race", "Wisdom", 1)
             },
             "halfling" => new[]
             {
-                new StatModifierDto("Race", "Dexterity", 2)
+                new StatModifierDto("Race", "Dexterity", 2),
+                new StatModifierDto("Race", "Charisma", 1)
             },
             "dragonborn" => new[]
             {
@@ -146,11 +149,13 @@ public static class CharacterSheetCalculator
             },
             "gnome" => new[]
             {
-                new StatModifierDto("Race", "Intelligence", 2)
+                new StatModifierDto("Race", "Intelligence", 2),
+                new StatModifierDto("Race", "Dexterity", 1)
             },
             "half-elf" => new[]
             {
                 new StatModifierDto("Race", "Charisma", 2)
+                // For Half-Elf: +2 Charisma, +1 to any two abilities - User will need to manually distribute
             },
             "half-orc" => new[]
             {

@@ -10,7 +10,7 @@
         "projectUniqueName": "C:\\CharacterCreation\\src\\CharacterCreation.Application\\CharacterCreation.Application.csproj",
         "projectName": "CharacterCreation.Application",
         "projectPath": "C:\\CharacterCreation\\src\\CharacterCreation.Application\\CharacterCreation.Application.csproj",
-        "packagesPath": "C:\\Users\\vlad9\\AppData\\Local\\Temp\\cursor-sandbox-cache\\8762863a7656df6fc95f69740fa8171c\\nuget",
+        "packagesPath": "C:\\Users\\vlad9\\.nuget\\packages\\",
         "outputPath": "C:\\CharacterCreation\\src\\CharacterCreation.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
@@ -354,7 +354,7 @@
         "projectUniqueName": "C:\\CharacterCreation\\src\\CharacterCreation.Domain\\CharacterCreation.Domain.csproj",
         "projectName": "CharacterCreation.Domain",
         "projectPath": "C:\\CharacterCreation\\src\\CharacterCreation.Domain\\CharacterCreation.Domain.csproj",
-        "packagesPath": "C:\\Users\\vlad9\\AppData\\Local\\Temp\\cursor-sandbox-cache\\8762863a7656df6fc95f69740fa8171c\\nuget",
+        "packagesPath": "C:\\Users\\vlad9\\.nuget\\packages\\",
         "outputPath": "C:\\CharacterCreation\\src\\CharacterCreation.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [

@@ -13,3 +13,4 @@ C:\CharacterCreation\src\CharacterCreation.Application\obj\Debug\net10.0\Charact
 C:\CharacterCreation\src\CharacterCreation.Application\obj\Debug\net10.0\refint\CharacterCreation.Application.dll
 C:\CharacterCreation\src\CharacterCreation.Application\obj\Debug\net10.0\CharacterCreation.Application.pdb
 C:\CharacterCreation\src\CharacterCreation.Application\obj\Debug\net10.0\ref\CharacterCreation.Application.dll
+C:\CharacterCreation\src\CharacterCreation.Application\obj\Debug\net10.0\CharacterCreation.Application.sourcelink.json

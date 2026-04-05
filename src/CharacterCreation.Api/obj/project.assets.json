@@ -3244,7 +3244,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\vlad9\\AppData\\Local\\Temp\\cursor-sandbox-cache\\8762863a7656df6fc95f69740fa8171c\\nuget": {},
+    "C:\\Users\\vlad9\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
@@ -3253,7 +3253,7 @@
       "projectUniqueName": "C:\\CharacterCreation\\src\\CharacterCreation.Api\\CharacterCreation.Api.csproj",
       "projectName": "CharacterCreation.Api",
       "projectPath": "C:\\CharacterCreation\\src\\CharacterCreation.Api\\CharacterCreation.Api.csproj",
-      "packagesPath": "C:\\Users\\vlad9\\AppData\\Local\\Temp\\cursor-sandbox-cache\\8762863a7656df6fc95f69740fa8171c\\nuget",
+      "packagesPath": "C:\\Users\\vlad9\\.nuget\\packages\\",
       "outputPath": "C:\\CharacterCreation\\src\\CharacterCreation.Api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [

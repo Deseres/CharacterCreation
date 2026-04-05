@@ -27,29 +27,39 @@ export function RegisterPage() {
   }
 
   return (
-    <div className="auth-card">
-      <h1>Register</h1>
+    <div className="card auth-card">
+      <h1>Join the adventure</h1>
+      <p className="muted" style={{ marginBottom: '2rem' }}>Create an account to start building your characters.</p>
       <form onSubmit={onSubmit} className="stack">
-        <label>
-          Email
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        </label>
-        <label>
-          Password
+        <div className="form-group">
+          <label htmlFor="email">Email address</label>
           <input
+            id="email"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            placeholder="name@example.com"
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="password">Password</label>
+          <input
+            id="password"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            placeholder="Min. 8 characters"
           />
-        </label>
-        {error && <p className="error">{error}</p>}
+        </div>
+        {error && <div className="error">{error}</div>}
         <button type="submit" disabled={loading}>
           {loading ? 'Creating...' : 'Create account'}
         </button>
       </form>
-      <p>
-        Already have an account? <Link to="/login">Login</Link>
+      <p className="muted" style={{ marginTop: '1.5rem', textAlign: 'center' }}>
+        Already have an account? <Link to="/login" style={{ color: 'var(--primary)', fontWeight: 600 }}>Sign in</Link>
       </p>
     </div>
   )

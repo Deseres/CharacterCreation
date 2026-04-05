@@ -2,6 +2,7 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import { ProtectedRoute } from './auth/ProtectedRoute'
 import { CharacterListPage } from './pages/CharacterListPage'
 import { CharacterSheetPage } from './pages/CharacterSheetPage'
+import { CharacterCreationWizard } from './pages/CharacterCreationWizard'
 import { LoginPage } from './pages/LoginPage'
 import { RegisterPage } from './pages/RegisterPage'
 
@@ -15,6 +16,14 @@ function App() {
         element={
           <ProtectedRoute>
             <CharacterListPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/characters/create"
+        element={
+          <ProtectedRoute>
+            <CharacterCreationWizard />
           </ProtectedRoute>
         }
       />

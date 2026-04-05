@@ -27,29 +27,39 @@ export function LoginPage() {
   }
 
   return (
-    <div className="auth-card">
-      <h1>Login</h1>
+    <div className="card auth-card">
+      <h1>Welcome back</h1>
+      <p className="muted" style={{ marginBottom: '2rem' }}>Sign in to continue your adventure.</p>
       <form onSubmit={onSubmit} className="stack">
-        <label>
-          Email
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        </label>
-        <label>
-          Password
+        <div className="form-group">
+          <label htmlFor="email">Email address</label>
           <input
+            id="email"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            placeholder="name@example.com"
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="password">Password</label>
+          <input
+            id="password"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            placeholder="••••••••"
           />
-        </label>
-        {error && <p className="error">{error}</p>}
+        </div>
+        {error && <div className="error">{error}</div>}
         <button type="submit" disabled={loading}>
           {loading ? 'Signing in...' : 'Sign in'}
         </button>
       </form>
-      <p>
-        No account? <Link to="/register">Register</Link>
+      <p className="muted" style={{ marginTop: '1.5rem', textAlign: 'center' }}>
+        No account? <Link to="/register" style={{ color: 'var(--primary)', fontWeight: 600 }}>Create one</Link>
       </p>
     </div>
   )
